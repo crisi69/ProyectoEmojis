@@ -7,11 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Parejas de Emoji</title>
 
-    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="./prueba.css">
+
+    <!--Este script hace sustituye a un alert xo mas cuqui -> SweetAlert-->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     
 </head>
+<body>
 
-<br>
 
    <header>
 
@@ -19,28 +22,35 @@
 
    </header>
 
+   <br>
+   
+    <div id='tablero'>
 
-   <!--Aquí va el código del tablero-->
-    <div id="tablero">
+      <!--Aquí va el código del tablero a través del Dom insertando las carta-->
+
     </div>
 
    <br/>
 
-   <div>
-    <div class="nuevo-juego" onclick="generarTablero()">
-        Nuevo Juego
-    </div>
+   <div class="container">
+        <!--Este es el botón de nuevo juego q desordena los emojis y genera una nueva partida-->
+        <div class='nuevo-juego' onclick='generarTablero()'>
+           Nueva Partida
+        </div>
 
-    <div id="puntos">
-      0
-    </div>
+        <!--contador de puntos (hasta 8)-->
+        <div id='puntos'>
+           0
+       </div>
 
-    <div id="intentos">
+       <!--numero de intentos fallidos (8) No funciona bien-->
+       <div id='intentos'>
         
-      </div>
-   </div>
+       </div>
 
-  <script src="/src/script.js"></script>
+  </div>
+
+  <script src="./prueba.js"></script>
 
 </body>
 
