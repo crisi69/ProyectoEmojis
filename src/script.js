@@ -1,6 +1,5 @@
 'use strict';
 
-
 let iconos = []
 let selecciones = []
 let puntos;//declaro la variable xa la puntuacion ->  variable q cuente los puntos 
@@ -9,10 +8,7 @@ let cantidadCartas = 16;
 
 // entiendo que esta constante no se necesita        
 const intentosTotales = 8; // variable  const q cuente todos los intentos q tienes = (8)
-
 let intentos = intentosTotales;//   variable q cuente los intentos q no aciertas
-
-
 
 // Intento xa mover el onclick al JS (no va)
 /* let nuevoJuego = document.getElementsByClassName('nuevo-juego');
@@ -23,8 +19,7 @@ nuevoJuego.addEventListener('onclick', generarTablero());
         function cargarIconos() {
             iconos = ['🥝', '🍎', '🍍', '🍌', '🍓', '🍈', '🥑', '🍐', '🍏', '🍇', '🍉', '🍊', '🍋', '🍒', '🍑',];
         }
-
-
+        
         /* 
         dentro de la funcion de generar tablero vamos a 'cargar' los Iconos
         */
@@ -49,7 +44,7 @@ nuevoJuego.addEventListener('onclick', generarTablero());
                             ${iconos[0]}
                         </div>
                         <div class="cara superior">
-                            ❔
+                            
                         </div>
                     </div>
                 </div>        
@@ -61,7 +56,6 @@ nuevoJuego.addEventListener('onclick', generarTablero());
             tarjetas.sort(() => Math.random() - 0.5)
             tablero.innerHTML = tarjetas.join(" ")
         }
-
       
 
         function seleccionarTarjeta(i) {
@@ -73,15 +67,11 @@ nuevoJuego.addEventListener('onclick', generarTablero());
             if (selecciones.length === 2) {
                 deseleccionar(selecciones)
                 selecciones = []
-            }
-
-           
-           
+            }  
         }
 
         function deseleccionar(selecciones) {
             if (intentos > 0){
-
 
                 setTimeout(() => {
                     
@@ -100,17 +90,20 @@ nuevoJuego.addEventListener('onclick', generarTablero());
 
                     if(intentos === 0) {
                         
-                        swal(`ohhhh...has perdido...puntos:${puntos}`);
-
-                        console.log(swal(True));
-
+                        Swal.fire({
+                            title: 'Ohhh has perdido...',
+                            width: 600,
+                            height: 600,
+                            text:`Tus puntos son ${puntos}
+                            Te has excendido de intentos`,
+                            confirmButtonText: 'Ok',
+                        });
 
                    setTimeout(() => {
 
                     generarTablero();
                   }, 2000)
                 }
-
                 }else{
 
                     // trasera1.classListAdd
@@ -125,26 +118,16 @@ nuevoJuego.addEventListener('onclick', generarTablero());
                 // añado el if() xa la funcion partidaGanada
                  if (partidaGanada()){
 
-                    swal(`Has ganado!!`, `tu puntuación es: ${puntos}`);
-
-                   /*  Swal.fire({
-                        title: 'Partida finalizada',
-                        text: `Has Ganado!!! puntos: ${puntos}`,
-                        confirmButtonText: 'OK',
-                    
-                    }); */
-
+                    Swal.fire({
+                        title:'Has ganado!!!!!',
+                        text: `Has conseguido ${puntos} puntos`,
+                        confirmButtonText: 'Ok',
+                     });
                  }
             }, 1000);
-        }
-       
+        }  
     }
 
-
-
-
-
-  
 // si la parte trasera de la carta es diferente de 'pink' devuelve false / de lo contrario true
 function partidaGanada() {
     for(let i = 0; i < cantidadCartas; i++) {
@@ -153,10 +136,7 @@ function partidaGanada() {
 
         if(trasera.style.background !== 'pink') {
             return false;
-        }
-        
+        } 
     }
-
     return true;
-
 }
