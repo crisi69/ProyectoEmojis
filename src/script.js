@@ -9,6 +9,7 @@ let cantidadCartas = 16;
 // entiendo que esta constante no se necesita        
 const intentosTotales = 8; // variable  const q cuente todos los intentos q tienes = (8)
 let intentos = intentosTotales;//   variable q cuente los intentos q no aciertas
+const iconosBase = ['🥝', '🍎', '🍍', '🍌', '🍓', '🍈', '🥑', '🍐', '🍏', '🍇', '🍉', '🍊', '🍋', '🍒', '🍑'];
 
 // Intento xa mover el onclick al JS (no va)
 /* let nuevoJuego = document.getElementsByClassName('nuevo-juego');
@@ -16,10 +17,14 @@ nuevoJuego.addEventListener('onclick', generarTablero());
  */
         generarTablero()
 
+        // Creamos una función que nos devuelve los iconos de frutas desordenados en el array iconos
         function cargarIconos() {
-            iconos = ['🥝', '🍎', '🍍', '🍌', '🍓', '🍈', '🥑', '🍐', '🍏', '🍇', '🍉', '🍊', '🍋', '🍒', '🍑',];
-        }
-        
+            iconosBase.sort(() => Math.random() - 0.5)
+
+            for (let i = 0; i < iconosBase.length; i++){
+                iconos.push(iconosBase[i]);
+            };
+        };
         /* 
         dentro de la funcion de generar tablero vamos a 'cargar' los Iconos
         */
@@ -30,12 +35,14 @@ nuevoJuego.addEventListener('onclick', generarTablero());
             // meto aqui esta línea xa q al darle a nuevo juego los puntos empiecen desde 0
             document.getElementById('puntos').innerHTML = `Puntos: ${puntos}`;
             document.getElementById('intentos').innerHTML = `Intentos: ${intentos}`;
+            // Llamos a la función para que cargue los iconos
             cargarIconos()
             selecciones = []
+            // definimos la variable tablero y le asignamos el id tablero del html
             let tablero = document.getElementById('tablero')
             let tarjetas = []
+            // Creamos un bucle de la misma longitud que la cantidad de cartas
             for (let i = 0; i < cantidadCartas; i++) {
-                // cambiamos 16 x cantiadCartas
                 // con esto generamos cada tarjeta/ carta 
                 tarjetas.push(`
                 <div class="area-tarjeta" onclick="seleccionarTarjeta(${i})">
@@ -48,7 +55,7 @@ nuevoJuego.addEventListener('onclick', generarTablero());
                         </div>
                     </div>
                 </div>        
-                `)
+                `);
                 if ( i % 2 == 1) {
                     iconos.splice(0, 1)
                 }
@@ -56,7 +63,6 @@ nuevoJuego.addEventListener('onclick', generarTablero());
             tarjetas.sort(() => Math.random() - 0.5)
             tablero.innerHTML = tarjetas.join(" ")
         }
-      
 
         function seleccionarTarjeta(i) {
             let tarjeta = document.getElementById('tarjeta' + i)
@@ -77,19 +83,19 @@ nuevoJuego.addEventListener('onclick', generarTablero());
                     
                     let trasera1 = document.getElementById('trasera' + selecciones[0])
                     let trasera2 = document.getElementById('trasera' + selecciones[1])
+
                     if (trasera1.innerHTML !== trasera2.innerHTML) {
-                    let tarjeta1 = document.getElementById('tarjeta' + selecciones[0])
-                    let tarjeta2 = document.getElementById('tarjeta' + selecciones[1])
-                    tarjeta1.style.transform = 'rotateY(0deg)';
-                    tarjeta2.style.transform = 'rotateY(0deg)';
+                        let tarjeta1 = document.getElementById('tarjeta' + selecciones[0])
+                        let tarjeta2 = document.getElementById('tarjeta' + selecciones[1])
+                        tarjeta1.style.transform = 'rotateY(0deg)';
+                        tarjeta2.style.transform = 'rotateY(0deg)';
 
-                     intentos--;
-                    document.getElementById('intentos').innerHTML = `Intentos: ${intentos}`;
+                        intentos--;
+                        document.getElementById('intentos').innerHTML = `Intentos: ${intentos}`;
 
-                    console.log(intentos); 
+                        console.log(intentos); 
 
                     if(intentos === 0) {
-                        
                         Swal.fire({
                             title: 'Ohhh has perdido...',
                             width: 600,
@@ -98,14 +104,9 @@ nuevoJuego.addEventListener('onclick', generarTablero());
                             Te has excendido de intentos`,
                             confirmButtonText: 'Ok',
                         });
-
-                   setTimeout(() => {
-
-                    generarTablero();
-                  }, 2000)
+                  intentos= 8;
                 }
                 }else{
-
                     // trasera1.classListAdd
                     trasera1.style.background = 'pink'
                     trasera2.style.background = 'pink'
