@@ -9,7 +9,7 @@ let cantidadCartas = 16;
 // entiendo que esta constante no se necesita        
 const intentosTotales = 8; // variable  const q cuente todos los intentos q tienes = (8)
 let intentos = intentosTotales;//   variable q cuente los intentos q no aciertas
-const iconosBase = ['🥝', '🍎', '🍍', '🍌', '🍓', '🍈', '🥑', '🍐', '🍏', '🍇', '🍉', '🍊', '🍋', '🍒', '🍑'];
+const iconosBase = ['🥝', '🍎', '🍍', '🍌', '🍓', '🍈', '🥑', '🍐', '🍏', '🍇', '🍉', '🍊', '🍋', '🍒', '🍑','🥥'];
 
 // Intento xa mover el onclick al JS (no va)
 /* let nuevoJuego = document.getElementsByClassName('nuevo-juego');
@@ -97,11 +97,11 @@ nuevoJuego.addEventListener('onclick', generarTablero());
 
                     if(intentos === 0) {
                         Swal.fire({
-                            title: 'Ohhh has perdido...',
+                            icon: 'error',
+                            title: 'Epic Fail!!!',
                             width: 600,
                             height: 600,
-                            text:`Tus puntos son ${puntos}
-                            Te has excendido de intentos`,
+                            text:`Has conseguido ${puntos} puntos`,
                             confirmButtonText: 'Ok',
                         });
                   intentos= 8;
@@ -120,6 +120,7 @@ nuevoJuego.addEventListener('onclick', generarTablero());
                  if (partidaGanada()){
 
                     Swal.fire({
+                        icon: 'success',
                         title:'Has ganado!!!!!',
                         text: `Has conseguido ${puntos} puntos`,
                         confirmButtonText: 'Ok',
