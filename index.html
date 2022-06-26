@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -9,7 +9,7 @@
     <link rel="shortcut icon" href="./css/resourcers.css/tree.ico" type="image/x-icon">
     <link rel="stylesheet" href="./css/styles.css">
 
-    <!--Este script hace sustituye a un alert xo mas cuqui -> SweetAlert-->
+    <!--Este script añade el SweetAlert-->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
@@ -19,39 +19,38 @@
 
     <h1><img src="./css/resourcers.css/Titulo.png" alt="Logo_juego" class="img"></h1>
 
-    <div class="container">
-      <!--Este es el botón de nuevo juego q desordena los emojis y genera una nueva partida-->
+  <div class="container">
       
-    <div class=" contadores">
-      <!--contador de puntos (hasta 8)-->
-      <div id='puntos' class='foot'>
+      
+    <div class="account">
+     
+       <div id='points' class='foot'>
          0
+       </div>
+
+    <div id='attempts' class='foot'>
+      
      </div>
 
-     <!--numero de intentos fallidos (8) No funciona bien-->
-     <div id='intentos' class='foot'>
-      
-     </div>
     </div>
-    <div class='nuevo-juego foot' onclick='generarTablero()'>
+
+    <div class='new-game foot' onclick='generateBoard()'>
        Nueva Partida
     </div>
 
 </div>
 
-
    </header>
 
-   <br>
+   <br/>
    
-    <div id='tablero'>
+    <div id='board'>
 
-      <!--Aquí va el código del tablero a través del Dom insertando las carta-->
+      <!--Aquí va el código del tablero a través del Dom insertando las cartas-->
 
     </div>
 
    <br/>
-
 
   <script src="./src/script.js"></script>
 
